@@ -1,5 +1,6 @@
 var  graphql = require('graphql');
 var Post = require('../types/Post');
+var postModel = require('../../models/postModel')
 const fakedb = [{
     _id: '1',
     author: 'toonz',
@@ -23,7 +24,9 @@ var queryType = new graphql.GraphQLObjectType({
       posts: {
         type: new graphql.GraphQLList(Post),
         resolve: function () {
-          return fakedb;
+          var posts = postModel.find().exec();
+          console.log(posts);
+          return posts;
         }
       }
     }
