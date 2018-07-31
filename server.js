@@ -3,10 +3,10 @@ const graphqlHTTP = require("express-graphql");
 const app = express();
 const postSchema = require('./graphql/index');
 const mongoose = require('mongoose');
-// const config = require('./config/configDB');
+const config = require('./config/configDB');
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://127.0.0.1:27017/test')
+mongoose.connect(config.db);
 var db = mongoose.connection;
 db.on('error', () => { console.log('---FAILED to connect to mongoose') })
 db.once('open', () => {
@@ -15,7 +15,6 @@ db.once('open', () => {
 
 app.use('/graphql', graphqlHTTP({
   schema: postSchema,
-  rootValue: global,
   graphiql: true
 }));
 

@@ -8,4 +8,4 @@ const postModel = new Schema({
     show: {type: Boolean}
 });
 
-module.exports =  mongoose.model('Posts', postModel); 
+module.exports =  mongoose.model('posts', postModel); 
