@@ -1,28 +1,17 @@
 var graphql = require('graphql');
 var PostType = require('./../types/Post');
 var PostModel = require('./../../models/postModel');
-var commentInputType = require('../types/inputCommentType');
+// var commentInputType = require('../types/inputCommentType');
+var inputPost = require('../types/inputTypes/inputPostType')
 
 var addPost = {
     type: PostType,
     args: {
-        author: {
-            type: new graphql.GraphQLNonNull(graphql.GraphQLString)
-        },
-        title: {
-            type: new graphql.GraphQLNonNull(graphql.GraphQLString)
-        },
-        content: {
-            type: new graphql.GraphQLNonNull(graphql.GraphQLString)
-        },
-        comment : {
-            type: new graphql.GraphQLList(commentInputType)
-        },
-        show: {
-            type: new graphql.GraphQLNonNull(graphql.GraphQLBoolean)
+        input : {
+            type : new graphql.GraphQLNonNull(inputPost)
         }
     },
-    resolve : (_,input) =>{
+    resolve : (_,{input}) =>{
         var pModel = new PostModel(input);
         var newPost = pModel.save();
         return newPost;

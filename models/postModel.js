@@ -3,7 +3,6 @@ var mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const commentType = new Schema({
-    // id: { type: String },
     message: { type: String }
 })
 
