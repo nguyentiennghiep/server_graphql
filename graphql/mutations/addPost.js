@@ -1,6 +1,7 @@
 var graphql = require('graphql');
 var PostType = require('./../types/Post');
 var PostModel = require('./../../models/postModel');
+var commentInputType = require('../types/inputCommentType');
 
 var addPost = {
     type: PostType,
@@ -13,6 +14,9 @@ var addPost = {
         },
         content: {
             type: new graphql.GraphQLNonNull(graphql.GraphQLString)
+        },
+        comment : {
+            type: new graphql.GraphQLList(commentInputType)
         },
         show: {
             type: new graphql.GraphQLNonNull(graphql.GraphQLBoolean)

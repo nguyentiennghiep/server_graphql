@@ -1,7 +1,10 @@
 const graphql = require('graphql');
+
+var commentType = require('./commentType');
+
 var postType = new graphql.GraphQLObjectType({
     name: 'Post',
-    fields:  {
+    fields: () => ({
         _id: {
             type: new graphql.GraphQLNonNull(graphql.GraphQLID)
         },
@@ -14,13 +17,13 @@ var postType = new graphql.GraphQLObjectType({
         content: {
             type: new graphql.GraphQLNonNull(graphql.GraphQLString)
         },
-        // createAt: {
-        //     type: new graphql.GraphQLNonNull(GraphQLDateTime)
-        // }
+        comment: {
+            type: new graphql.GraphQLNonNull(commentType)
+        },
         show: {
             type: new graphql.GraphQLNonNull(graphql.GraphQLBoolean)
         }
-    }
+    })
 });
 
 module.exports = postType;
