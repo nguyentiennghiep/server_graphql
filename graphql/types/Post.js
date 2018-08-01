@@ -18,7 +18,7 @@ var postType = new graphql.GraphQLObjectType({
             type: new graphql.GraphQLNonNull(graphql.GraphQLString)
         },
         comment: {
-            type: new graphql.GraphQLNonNull(commentType)
+            type: new graphql.GraphQLList(commentType)
         },
         show: {
             type: new graphql.GraphQLNonNull(graphql.GraphQLBoolean)
