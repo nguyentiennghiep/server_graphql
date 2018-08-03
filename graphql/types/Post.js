@@ -20,6 +20,9 @@ var postType = new graphql.GraphQLObjectType({
         comment: {
             type: new graphql.GraphQLList(commentType)
         },
+        imgURL:{
+            type: graphql.GraphQLString
+        },
         show: {
             type: new graphql.GraphQLNonNull(graphql.GraphQLBoolean)
         }

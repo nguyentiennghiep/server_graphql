@@ -14,6 +14,9 @@ var inputPostType = new graphql.GraphQLInputObjectType({
         content: {
             type: new graphql.GraphQLNonNull(graphql.GraphQLString)
         },
+        imgURL:{
+            type: graphql.GraphQLString
+        },
         show: {
             type: new graphql.GraphQLNonNull(graphql.GraphQLBoolean)
         }

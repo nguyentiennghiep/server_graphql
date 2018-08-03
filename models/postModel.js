@@ -10,6 +10,7 @@ const postModel = new Schema({
     author: { type: String },
     title: { type: String },
     content: { type: String },
+    imgURL :{type:String},
     comment: [commentType],
     show: { type: Boolean }
 });
